@@ -318,3 +318,9 @@ ASALocalRun/
 
 # MSBuild Binary and Structured Log
 *.binlog
+/ConsoleApp1
+/CoreExample
+/FrameworkExample
+/Module001
+/Module01
+/WpfApp1
