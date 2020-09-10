@@ -8,8 +8,6 @@ namespace Ex1
         {
             Console.WriteLine("Exercise 1 - Welcome");
 
-
-
             Console.Write("Enter your name: ");
             string userName = Console.ReadLine();
 
