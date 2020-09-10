@@ -21,10 +21,17 @@ namespace Module02
                 var userInput = GetInput("Gimme a number: ");
                 var number = int.Parse(userInput);
 
-                if (number == 0)
+                //if (number == 0)
+                //{
+                //    return; //finally will STILL execute
+                //}
+
+                if(number < 0)
                 {
-                    return; //finally will STILL execute
+                    throw new InvalidOperationException("No negative numbers");
                 }
+
+
                 const int BASE_NUMBER = 100;
                 var answer = BASE_NUMBER / number;
                 Console.WriteLine($"Your answer is {answer}");
@@ -50,9 +57,19 @@ namespace Module02
             }
             catch (Exception ex)
             {
+                //Logging and clean up
                 Console.WriteLine($"Unknown error: {ex.Message}");
+
+                //Good options for propegating an exception
+                //throw new ArgumentException("message", ex);
+                //throw;
+
+
+                //bad option
+                //throw ex;
             }
-            finally{
+            finally
+            {
                 Console.WriteLine("Fake Connection closed");
             }
 
