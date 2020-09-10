@@ -12,6 +12,83 @@ namespace Module02
         static void Main(string[] args)
         {
 
+
+
+            try
+            {
+                //Open DB connection/file/socket
+                Console.WriteLine("Fake Connection Open");
+                var userInput = GetInput("Gimme a number: ");
+                var number = int.Parse(userInput);
+
+                if (number == 0)
+                {
+                    return; //finally will STILL execute
+                }
+                const int BASE_NUMBER = 100;
+                var answer = BASE_NUMBER / number;
+                Console.WriteLine($"Your answer is {answer}");
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine("You should not press ctrl+z");
+                var n = 0;
+                var answer = 1 / n;
+
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("That is not a whole number");
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine($"Whole numbers must be between {int.MinValue} and {int.MaxValue}");
+            }
+            catch (DivideByZeroException)
+            {
+                Console.WriteLine("0 is not a valid value");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unknown error: {ex.Message}");
+            }
+            finally{
+                Console.WriteLine("Fake Connection closed");
+            }
+
+
+
+            //Demo2();
+
+            ////Naming parameters allows us to skip or reorder parameters
+            ////name:value
+            //PrintHeader(applicationTitle:"Module 2 Application", includeLines:false);
+
+            ////Console.Write("Enter your name: ");
+            ////string name = Console.ReadLine();
+
+            //string name = GetInput("Enter your name: ");
+
+            //Console.WriteLine($"Welcome {name}");
+
+
+            //string generalInput = GetInput();
+
+            //string city = GetInput("Current City: ", "n/a");
+
+            //Demo3();
+        } //end Main
+
+        private static void Demo3()
+        {
+            int someNumber = 0;
+            SetDefaultInt(ref someNumber);
+
+            Console.WriteLine(someNumber);
+        }
+
+        private static void Demo2()
+        {
             var userAge = GetInput("Enter your age:");
 
 
@@ -31,34 +108,27 @@ namespace Module02
 
 
             var userYearsOfService = GetInput("In Years, how long have you worked for the company? ");
-            if(int.TryParse(userYearsOfService, out int years))
+            if (int.TryParse(userYearsOfService, out int years))
             {
                 Console.WriteLine("Years worked: " + years);
             }
+        }
 
+        static bool FakeOut(out int n)
+        {
+            n = 0;
 
+            return true;
+        }
 
-
-            ////Naming parameters allows us to skip or reorder parameters
-            ////name:value
-            //PrintHeader(applicationTitle:"Module 2 Application", includeLines:false);
-
-            ////Console.Write("Enter your name: ");
-            ////string name = Console.ReadLine();
-
-            //string name = GetInput("Enter your name: ");
-
-            //Console.WriteLine($"Welcome {name}");
-
-
-            //string generalInput = GetInput();
-
-            //string city = GetInput("Current City: ", "n/a");
-
-
-
-        } //end Main
-
+        //Fake Ref parameter for demo
+        static void SetDefaultInt(ref int number)
+        {
+            if (number == 0)
+            {
+                number = 100;
+            }
+        }
 
         static string GetInput()
         {
@@ -107,7 +177,8 @@ namespace Module02
         }
 
 
-        //var sum = Add(1,2)
+
+        //var sum = Add(1,2,3)
         static int Add(params int[] numbers)
         {
             var total = 0;
@@ -119,12 +190,15 @@ namespace Module02
 
         }
 
+
+        //var sum = Add(1,2,3)
         static int Add(int a, int b, int c)
         {
             return a + b + c;
 
         }
 
+        //var sum = Add(1,2)
         static int Add(int a, int b)
         {
             return a + b;
