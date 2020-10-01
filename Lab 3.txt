@@ -1,0 +1,19 @@
+Homework / Lab
+
+Lab 3
+  Ex 1 - To Do List File
+     Create a string array, with a list of TODO items
+     Write that List to ToDo.txt
+     Using FileStream and Stream Writer
+  Ex 2 Read the file in from ToDo.txt
+     using FileStream and StreamReader
+
+  Ex 3 - Use Json.Net 
+     Create a Todo Class
+     Create a List<TODO>
+     JsonConvert.Serialize to a string
+     Print string on screen
+
+  Ex 4
+  Use the Same Todo class to store Todos in a Database
+    using EF Code First
